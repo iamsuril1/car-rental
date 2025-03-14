@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap');
+
+body {
+  font-family: 'Lora', serif;
+  background-color: #f2ece3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.auth-container {
+  background: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  width: 350px;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.auth-container h2 {
+  color: #8d6d62;
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #d6b899;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+}
+
+input:focus {
+  border-color: #8d6d62;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #e48f44;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: #d67d3b;
+}
+
+p {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+p a {
+  color: #8d6d62;
+  text-decoration: none;
+  font-weight: bold;
+}

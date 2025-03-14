@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap');
+
+body {
+  font-family: 'Lora', serif;
+  background-color: #f2ece3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.register-container {
+  display: flex;
+  width: 1000px;
+  background: #f2ece3;
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 30px;
+}
+
+/* Left Section */
+.left-section {
+  flex: 1;
+  padding: 50px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.left-section img {
+  width: 150px;
+  margin-bottom: 30px;
+}
+
+/* Make "Simplifying Room Rentals" text larger */
+.left-section h2 {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.left-section p {
+  font-size: 24px;
+  color: #8d6d62;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Right Section */
+.right-section {
+  flex: 1;
+  padding: 50px;
+  text-align: center;
+}
+
+/* Light brown background for input fields */
+.right-section input {
+  background: #d6b899;
+  color: black;
+  width: 100%;
+  padding: 16px;
+  margin: 14px 0;
+  border: 2px solid #8d6d62;
+  border-radius: 12px;
+  font-size: 20px;
+  outline: none;
+}
+
+.right-section input:focus {
+  border-color: #8d6d62;
+}
+
+/* Move "Login instead" slightly to the right */
+.right-section h2 span {
+  margin-left: 10px;
+}
+
+/* Role Selection */
+.role-selection {
+  font-size: 20px;
+  color: #8d6d62;
+  margin: 20px 0 10px;
+  font-weight: bold;
+}
+
+.radio-group {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 10px 0;
+}
+
+.radio-group label {
+  font-size: 18px;
+  color: #8d6d62;
+}
+
+/* Terms & Conditions */
+.terms {
+  font-size: 16px;
+  color: black;
+  margin-top: 10px;
+}
+
+.terms a {
+  color: #e48f44;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* "Create an Account" button with border and white text */
+.bordered-btn {
+  border: 2px solid #e48f44;
+  color: white;
+}
+
+/* Google Button with Logo */
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  color: black;
+  border: 2px solid #d6b899;
+  font-size: 18px;
+  padding: 12px;
+  width: 100%;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.google-btn img {
+  width: 24px;
+  margin-right: 10px;
+}
+
+button {
+  width: 100%;
+  padding: 16px;
+  background: #e48f44;
+  color: white;
+  font-size: 20px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 14px;
+}
+
+button:hover {
+  background: #d67d3b;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .register-container {
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px;
+    padding: 25px;
+  }
+
+  .left-section {
+    padding: 30px;
+  }
+
+  .left-section p {
+    font-size: 20px;
+  }
+
+  .right-section {
+    padding: 30px;
+  }
+}
