@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth, signInWithGoogle } from "../firebase";
+import { signInWithGoogle } from "../firebase"; // Firebase only for Google login
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/register.css";
 
@@ -15,7 +14,17 @@ function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
+      const response = await fetch("http://localhost:5000/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, phone, email, password, role }),
+      });
+
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.message || "Registration failed");
+
+      // Store JWT token & navigate to dashboard
+      localStorage.setItem("token", data.token);
       navigate("/dashboard");
     } catch (error) {
       alert(error.message);
@@ -28,7 +37,7 @@ function Register() {
       <div className="left-section">
         <img src="/assets/logo.png" alt="Logo" />
         <h2>Simplifying Room Rentals</h2>
-        <p>List, browse, inspect and rent securely - all in one place.</p>
+        <p>List, browse, inspect, and rent securely - all in one place.</p>
       </div>
 
       {/* Right Section */}
@@ -36,7 +45,7 @@ function Register() {
         <h2>Create an account <span><Link to="/">Login instead</Link></span></h2>
         
         <form onSubmit={handleRegister}>
-          <input type="text" placeholder="Username" required onChange={(e) => setUsername(e.target.value)} />
+          <input type="text" placeholder="Full Name" required onChange={(e) => setUsername(e.target.value)} />
           <input type="text" placeholder="Phone Number" required onChange={(e) => setPhone(e.target.value)} />
           <input type="email" placeholder="Email" required onChange={(e) => setEmail(e.target.value)} />
           <input type="password" placeholder="Password" required onChange={(e) => setPassword(e.target.value)} />
@@ -53,11 +62,11 @@ function Register() {
             </label>
           </div>
 
-          <p className="terms">
+          <p className="role-selection">
             By signing up, you agree to our <Link to="/terms">Terms & Conditions</Link>.
           </p>
 
-          <button type="submit" className="bordered-btn">Create an Account</button>
+          <button type="submit" className="bordered-btn">Create an account</button>
         </form>
 
         <p className="or-divider">- OR -</p>

@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth, signInWithGoogle } from "../firebase";
+import { signInWithGoogle } from "../firebase"; // Firebase only for Google
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/login.css";
 
@@ -12,7 +11,18 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      // Call backend for email/password authentication
+      const response = await fetch("http://localhost:5000/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.message || "Login failed");
+
+      // Store token & navigate to dashboard
+      localStorage.setItem("token", data.token);
       navigate("/dashboard");
     } catch (error) {
       alert(error.message);
@@ -39,13 +49,13 @@ function Login() {
             <Link to="/forgot-password">Forgot Password?</Link>
           </div>
 
-          <button type="submit">Login</button>
+          <button type="submit" className="bordered-btn">Login</button>
         </form>
 
         <p className="or-divider">- OR -</p>
         <button className="google-btn" onClick={signInWithGoogle}>Continue with Google</button>
 
-        <p>Don't have an account? <Link to="/register">Register</Link></p>
+        <p>Don't have an account? <Link to="/register">Create an account</Link></p>
       </div>
     </div>
   );
