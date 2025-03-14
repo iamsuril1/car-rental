@@ -50,8 +50,11 @@ body {
 /* Right Section */
 .right-section {
   flex: 1;
-  padding: 50px;
+  padding: 70px; /* Increased padding */
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* Light brown background for input fields */
@@ -71,9 +74,20 @@ body {
   border-color: #8d6d62;
 }
 
-/* Move "Login instead" slightly to the right */
+/* Modify the h2 and the "Login instead" link to be in the same line */
+.right-section h2 {
+  font-size: 32px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Space between the "Create an account" text and the "Login instead" link */
+}
+
 .right-section h2 span {
   margin-left: 10px;
+  font-size: 16px;
+  font-weight: normal;
 }
 
 /* Role Selection */
